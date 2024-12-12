@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function inicio() {
-  const navigation = useNavigation("");
+export default function Inicio() {
+  const navigation = useNavigation();
 
   return (
     <View style={styles.body}>
+      <Image
+        source={{ uri: 'https://assespropr.org.br/wp-content/uploads/2022/05/Senai-300x300.png' }}
+        style={styles.image}
+      />
+
       <View style={styles.menu}>
         <Text style={styles.title}>Livrarias SENAI</Text>
         <View style={styles.buttongroup}>
@@ -58,6 +63,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 350,
     borderRadius: 8,
+    zIndex: 1,  
   },
   title: {
     color: 'black',
@@ -71,5 +77,13 @@ const styles = StyleSheet.create({
   },
   buttongroup: {
     gap: 10,
+  },
+  image: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    width: 80, 
+    height: 80, 
+    borderRadius: 8,  
   },
 });
