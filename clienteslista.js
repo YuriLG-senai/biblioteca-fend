@@ -3,20 +3,10 @@ import { View, Text, Button, StyleSheet, ScrollView, TouchableOpacity } from 're
 import { getUsers } from './api/Api';
 import { useNavigation } from '@react-navigation/native';
 
-
-
-
-
-
 export default function VerUsuarios() {
   const navigation = useNavigation();
   const [users, setUsers] = useState([]);
   const [expandedUser, setExpandedUser] = useState(null);
-
-
-
-
-
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -28,114 +18,42 @@ export default function VerUsuarios() {
         console.error('Erro ao buscar usuários:', error);
       }
     };
-
-
-
     fetchUsers();
   }, []);
-
-
-
-
-
 
   const Expand = (userId) => {
     setExpandedUser(expandedUser === userId ? null : userId);
   };
 
-
-
-
-
-
   return (
     <View style={styles.body}>
-
       <View style={styles.menuview}>
-
         <Text style={styles.title}>Ver Usuários</Text>
-
-
-
         <ScrollView>
-
-
           {users.length > 0 ? (
             users.map((user) => (
-
-
-
               <View key={user.id} style={styles.userItem}>
-
                 <TouchableOpacity onPress={() => Expand(user.id)}>
-
                   <Text style={styles.userButton}>{user.nome}</Text>
-
                 </TouchableOpacity>
-
-
-
-
                 {expandedUser === user.id && (
-
-
                   <View style={styles.detalhes}>
-
-                    <Text style={styles.userText}>
-                      ID do usuário: {user.id}
-                    </Text>
-
-                    <Text style={styles.userText}>
-                      Nome: {user.nome}
-                    </Text>
-
-                    <Text style={styles.userText}>
-                      Telefone: {user.telefone}
-                    </Text>
-
-                    <Text style={styles.userText}>
-                      Idade: {user.idade}
-                    </Text>
-
+                    <Text style={styles.userText}>ID do usuário: {user.id}</Text>
+                    <Text style={styles.userText}>Nome: {user.nome}</Text>
+                    <Text style={styles.userText}>Telefone: {user.telefone}</Text>
+                    <Text style={styles.userText}>Idade: {user.idade}</Text>
                   </View>
-
-
-
                 )}
-
               </View>
-
             ))
-
           ) : (
-
             <Text style={styles.userText2}>Não há usuários para exibir.</Text>
-
           )}
-
-
         </ScrollView>
-
-
-
-
-
-
-
-
       </View>
-
     </View>
-
   );
-
 }
-
-
-
-
-
-
 
 const styles = StyleSheet.create({
   body: {
@@ -183,6 +101,6 @@ const styles = StyleSheet.create({
   },
   userText2: {
     fontSize: 16,
-    color: 'white',
+    color: 'black',
   },
 });

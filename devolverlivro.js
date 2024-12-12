@@ -16,7 +16,7 @@ export default function DevolverLivro() {
       console.log('Resposta da API:', response.data);
       alert('Livro devolvido com sucesso!');
       setId('');
-      setUsuarioId('');
+      setUsuarioInpm ('');
     } catch (error) {
       console.error('Erro ao devolver livro:', error.response?.data || error.message);
       alert('Erro ao devolver livro: ' + (error.response?.data?.message || 'Desconhecido'));
